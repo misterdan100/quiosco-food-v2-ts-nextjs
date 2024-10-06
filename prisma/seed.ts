@@ -13,7 +13,7 @@ async function main() {
             data: products
         })
     } catch (error) {
-        console.log(error)
+        console.log('[SEEDPRISMAMAIN]', error)
     }
 }
 
