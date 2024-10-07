@@ -9,6 +9,7 @@ interface Store {
     decreaseQuantity: (id: Product['id']) => void
     deleteItem: (id: Product['id']) => void
     loadStorage: () => void
+    clearOrder: () => void
 }
 
 export const useStore = create<Store>((set, get) => ({
@@ -98,5 +99,11 @@ export const useStore = create<Store>((set, get) => ({
                 order: JSON.parse(orderFromStorage)
             }))
         }
+    },
+    clearOrder: () => {
+        set((state) => ({
+            order: []
+        }))
+        localStorage.removeItem('quiosco_order')
     }
 }))
