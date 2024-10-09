@@ -20,3 +20,20 @@ export const OrderIdSchema = z.object({
 export const SearchSchema = z.object({
     search: z.string().trim().min(1, {message: 'Enter some value'})
 })
+
+export const ProductSchema = z.object({
+    name: z.string()
+        .trim()
+        .min(1, { message: 'Product name is required'}),
+    price: z.string()
+        .trim()
+        .transform((value) => parseFloat(value)) 
+        .refine((value) => value > 0, { message: 'Not valid price' })
+        .or(z.number().min(1, {message: 'Not valid price' })),
+    categoryId: z.string()
+        .trim()
+        .transform((value) => parseInt(value)) 
+        .refine((value) => value > 0, { message: 'Category is required' })
+        .or(z.number().min(1, {message: 'Category is required' })),
+    image: z.string().min(1, {message: 'Image is required'})
+})
