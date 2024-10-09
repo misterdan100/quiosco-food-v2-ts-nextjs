@@ -16,3 +16,7 @@ export const OrderIdSchema = z.object({
     orderId: z.string().transform(value => parseInt(value))
                 .refine( value => value > 0, {message: 'There is an error'})
 })
+
+export const SearchSchema = z.object({
+    search: z.string().trim().min(1, {message: 'Enter some value'})
+})

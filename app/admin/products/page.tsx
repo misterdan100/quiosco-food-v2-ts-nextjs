@@ -1,7 +1,9 @@
+import ProductSearchForm from "@/components/products/ProductSearchForm";
 import ProductsPagination from "@/components/products/ProductsPagination";
 import ProductTable from "@/components/products/ProductTable";
 import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function productCount() {
@@ -42,6 +44,18 @@ export default async function ProductPage({
   return (
     <>
       <Heading>Manage Products</Heading>
+
+      <div
+        className="flex flex-cold gap-5 lg:flex-row lg:justify-between"
+      >
+        <Link 
+          href={'/admin/products/new'}
+          className="bg-orange-100 text-orange-600 w-full lg:w-auto text-xl rounded-xl px-10 py-3 text-center font-semibold cursor-pointer hover:bg-orange-200 transition"
+        >Create product</Link>
+
+        <ProductSearchForm />
+      </div>
+
       <ProductTable products={products} />
       <ProductsPagination 
         page={page}
