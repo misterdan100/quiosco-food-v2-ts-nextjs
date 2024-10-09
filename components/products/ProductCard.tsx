@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import AddProductButton from "./AddProductButton";
@@ -9,13 +9,15 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
 
+  const imagePath = getImagePath(product.image)
+
   return (
     <div className="border bg-white rounded-2xl hover:shadow-md transition overflow-hidden">
       <div
           className="overflow-hidden"
           >
         <Image
-          src={`/products/${product.image}.jpg`}
+          src={`${imagePath}`}
           alt={`Image ${product.name}`}
           width={400}
           height={500}

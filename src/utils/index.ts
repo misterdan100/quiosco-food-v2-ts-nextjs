@@ -17,3 +17,12 @@ export function formatName(name: string): string {
     }
     return result.join(' ')
 }
+
+export function getImagePath(imagePath: string) {
+    const cloudinaryBaseUrl = 'https://res.cloudinary.com'
+    if(imagePath.startsWith(cloudinaryBaseUrl)) {
+        return imagePath
+    } else {
+        return `/products/${imagePath}.jpg`
+    }
+}
