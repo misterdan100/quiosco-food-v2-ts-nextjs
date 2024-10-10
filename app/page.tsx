@@ -1,7 +1,6 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <h1>Hi Mister Dan you're the best</h1>
-  );
+  redirect('/order/cafe')
 }

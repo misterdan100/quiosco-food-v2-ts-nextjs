@@ -2,6 +2,7 @@
 
 import { prisma } from "@/src/lib/prisma"
 import { OrderSchema } from "@/src/schema"
+import { revalidatePath } from "next/cache"
 
 export async function createOrder(data: unknown) {
     const result = OrderSchema.safeParse(data)
@@ -24,6 +25,7 @@ export async function createOrder(data: unknown) {
                 }
             }
         })
+        revalidatePath('/admin/orders')
     } catch (error) {
         console.log('[CREATEORDER]', error)
     }
