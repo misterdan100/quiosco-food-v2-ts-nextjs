@@ -5,14 +5,14 @@ import { formatCurrency } from "@/src/utils"
 import { useEffect, useMemo } from "react"
 import { createOrder } from "@/actions/create-order-action"
 import { OrderSchema } from "@/src/schema"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 
 export default function OrderSummary() {
   const loadStorage = useStore((state) => state.loadStorage)
   const clearOrder = useStore((state) => state.clearOrder)
   const order = useStore((state) => state.order)
 
-  useEffect(() => loadStorage(), [])
+  useEffect(() => loadStorage, [])
 
   const total = useMemo(() => order.reduce((total, current) => total + (current.subtotal), 0), [order])
 

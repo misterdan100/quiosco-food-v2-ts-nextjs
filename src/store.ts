@@ -16,7 +16,7 @@ export const useStore = create<Store>((set, get) => ({
     order: [],
     addToCart: (product) => {
 
-        const { categoryId, image, ...data } = product
+        const { ...data } = product
 
         let items: OrderItem[] = []
 
@@ -40,7 +40,7 @@ export const useStore = create<Store>((set, get) => ({
             }]
         }
 
-        set((state) => ({
+        set(() => ({
             order: items
         }))
 
@@ -101,7 +101,7 @@ export const useStore = create<Store>((set, get) => ({
         }
     },
     clearOrder: () => {
-        set((state) => ({
+        set(() => ({
             order: []
         }))
         localStorage.removeItem('quiosco_order')

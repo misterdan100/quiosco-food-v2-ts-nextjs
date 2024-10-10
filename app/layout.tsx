@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <link rel="icon" href="https://raw.githubusercontent.com/misterdan100/mister-todo-v2/main/src/assets/misterdan-favicon.png" type="image/x-icon" sizes="16x16"/>
+      </head>
       <body
         className={`${inter.className} bg-gray-100 antialiased`}
         suppressHydrationWarning={true}

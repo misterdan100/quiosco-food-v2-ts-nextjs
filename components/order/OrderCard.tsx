@@ -1,7 +1,6 @@
 import { completeOrder } from "@/actions/complete-order-action"
 import { OrderWithProducts } from "@/src/types"
 import { formatCurrency, formatName } from "@/src/utils"
-import ToastNotification from "../ui/ToastNotification"
 
 type OrderCardProps = {
     order: OrderWithProducts
